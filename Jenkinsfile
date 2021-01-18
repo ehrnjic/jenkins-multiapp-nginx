@@ -22,6 +22,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    docker-compose -f docker-compose-build.yaml ps && \
+                    docker-compose -f docker-compose-build.yaml down
                     docker-compose -f docker-compose-deploy.yaml up -d
                 '''
             }
