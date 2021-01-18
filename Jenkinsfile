@@ -4,7 +4,7 @@ pipeline {
         stage('Build all 3 images with docker-compose') {
             steps {
                 sh '''
-                    docker-compose -f docker-compose.yaml build
+                    docker-compose -f docker-compose-build.yaml build
                 '''
             }
         }
