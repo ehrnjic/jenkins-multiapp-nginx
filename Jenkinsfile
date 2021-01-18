@@ -8,10 +8,14 @@ pipeline {
                 '''
             }
         }
-        stage('Run test script inside container') {
+        stage('Deploy in test and run test script inside containers') {
             steps {
                 sh '''
-                    echo 'Test'
+                    docker-compose -f docker-compose-test.yaml up -d
+                    docker exec -i app1 npm test
+                    docker exec -i app2 npm test
+                    curl localhost:8081 && curl localhost:8081
+                    docker-compose -f docker-compose-test.yaml up -d
                 '''
             }
         }

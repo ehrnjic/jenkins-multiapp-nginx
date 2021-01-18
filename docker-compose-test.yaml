@@ -1,0 +1,32 @@
+version: '3.7'
+
+networks: 
+  backend:
+
+services:
+  
+  app1:
+    image: app1:$BUILD_ID
+    container_name: app1
+    networks: 
+      - backend
+    restart: always
+
+  app2:
+    image: app2:$BUILD_ID
+    container_name: app2
+    networks: 
+      - backend
+    restart: always
+  
+  lb:
+    image: lb:$BUILD_ID
+    container_name: lb
+    depends_on:
+      - app1
+      - app2
+    ports:
+      - '8081:8081'
+    networks: 
+      - backend
+    restart: always
