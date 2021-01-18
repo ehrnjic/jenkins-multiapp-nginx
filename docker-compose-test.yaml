@@ -7,21 +7,21 @@ services:
   
   app1:
     image: app1:$BUILD_ID
-    container_name: app1
+    container_name: app1-test
     networks: 
       - backend
     restart: always
 
   app2:
     image: app2:$BUILD_ID
-    container_name: app2
+    container_name: app2-test
     networks: 
       - backend
     restart: always
   
   lb:
     image: lb:$BUILD_ID
-    container_name: lb
+    container_name: lb-test
     depends_on:
       - app1
       - app2
