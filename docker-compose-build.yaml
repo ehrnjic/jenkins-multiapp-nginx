@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  app1:
+    image: "app1:$BUILD_ID"
+    build:
+      context: ./app1 
+      dockerfile: Dockerfile
+  app2:
+    image: "app2:$BUILD_ID"
+    build: 
+      context: ./app2
+      dockerfile: Dockerfile
+  lb:
+    image: "lb:$BUILD_ID"
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+
