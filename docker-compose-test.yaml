@@ -9,14 +9,14 @@ services:
     image: app1:$BUILD_ID
     container_name: app1-test
     networks: 
-      - backend
+      - backend-test
     restart: always
 
   app2:
     image: app2:$BUILD_ID
     container_name: app2-test
     networks: 
-      - backend
+      - backend-test
     restart: always
   
   lb:
@@ -28,5 +28,5 @@ services:
     ports:
       - '8081:8081'
     networks: 
-      - backend
+      - backend-test
     restart: always
