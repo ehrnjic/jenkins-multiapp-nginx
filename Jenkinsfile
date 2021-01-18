@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    echo 'Deploy'
+                    docker-compose -f docker-compose-deploy.yaml up -d
                 '''
             }
         }
