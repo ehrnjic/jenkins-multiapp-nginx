@@ -15,7 +15,7 @@ pipeline {
                     docker exec -i app1 npm test
                     docker exec -i app2 npm test
                     curl localhost:8081 && curl localhost:8081
-                    docker-compose -f docker-compose-test.yaml up -d
+                    docker-compose -f docker-compose-test.yaml down
                 '''
             }
         }
